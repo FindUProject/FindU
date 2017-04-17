@@ -1,0 +1,21 @@
+<?php
+/**
+ * Implements hook_menu()
+ */
+function devcommon_menu() {
+  $items = array();
+  $items['home'] = array(
+    'title' => 'Home',
+    'page callback' => 'homepage',
+    'access callback' => TRUE,
+  );
+  return $items;
+}
+
+
+/**
+ * Home page
+ */
+function homepage() {
+  return '';	
+}
