@@ -1,12 +1,12 @@
 /**
  * Common js
  */
-(function ($) {
+/*(function ($) {
 	'use strict';
   Drupal.behaviors.mytheme = {
 		attach: function (context, settings) {
 			jQuery('#edit-registration-type-1').click(function() {
-			  jQuery(location).attr('href', Drupal.settings.basePath + 'recuiter/register');
+			  jQuery(location).attr('href', Drupal.settings.basePath + 'recruiter/register');
 			  jQuery(this).attr('checked',true);	
 			});
 			jQuery('#edit-registration-type-0').click(function() {
@@ -15,10 +15,10 @@
 			});
 		}
   };
-}(jQuery));
+}(jQuery));*/
 
 
-( function ($) {
+/*( function ($) {
 'use strict';
   jQuery(document).ready(function() {
 			// Minify the Nav Bar
@@ -35,4 +35,4 @@
 				}
 			});
    });
-}(jQuery));
+}(jQuery));*/

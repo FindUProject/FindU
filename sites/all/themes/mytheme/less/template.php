@@ -9,9 +9,16 @@
  * @see page.tpl.php
  */
 function mytheme_preprocess_page(&$variables) {
-	$search_form = drupal_get_form('search_form');
+  $search_form = drupal_get_form('search_form');
   $search_form_box = drupal_render($search_form);
   $variables['mysearch'] = $search_form_box;
+  $arg = arg();
+  if ($arg[0] == 'user' && user_is_anonymous()) {
+	 $variables['content_column_class'] = ' class="col-sm-4 col-sm-offset-4 login-block"'; 
+  }
+  if ($arg[0] == 'user' && $arg[1] == 'register' && user_is_anonymous()) {
+	 $variables['content_column_class'] = ' class="col-sm-6 col-sm-offset-4 login-block"'; 
+  }
 }
 
 /**
@@ -82,8 +89,8 @@ function mytheme_preprocess_node(&$variables) {
  * Implements hook_form_alter().
  */
 function mytheme_form_alter(&$form, &$form_state, $form_id) {
-	$arg = arg();
-	$default_value = ($arg[0] == 'recuiter' && $arg[1] == 'register') ? 1: 0;
+	/*$arg = arg();
+	$default_value = ($arg[0] == 'recruiter' && $arg[1] == 'register') ? 1: 0;
   if ($form_id == 'user_register_form') {
 	  $form['registration_type'] = array(
 	    '#type' => 'radios',
@@ -91,5 +98,5 @@ function mytheme_form_alter(&$form, &$form_state, $form_id) {
 	    '#options' => array('Register As Athlete', 'Register As Coach'),
 	    '#weight' => -1000,
 	  );	
-	}
+	}*/
 }

@@ -1,6 +1,6 @@
 //dca7dd
 @border-color:#dca7dd;
-@thick-border-color:#1ab5c7;
+@thick-border-color:#283e4a;
 @white: #ffffff;
 @black: #000;
 
@@ -34,6 +34,10 @@ a:focus {
 .lead {
   width:100%;
   text-align:center;
+}
+body,
+body .main-container-wrapper {
+  background:#0077b5;
 }
 
 .header-wrapper {
@@ -242,7 +246,7 @@ div.sf-accordion-toggle.sf-style-default a {
 
 .footer_bottom {
   border-top:6px solid @thick-border-color;
-  background-color:#e7e7e7;
+  background:#0077b5;
   color:@gray-dark;
   padding:15px 0;
 }
@@ -436,5 +440,27 @@ body.navbar-is-fixed-top {
   .form-item {
     display:inline;
     padding:0 20px;
+  }
+}
+
+/*================= Login Block =============*/
+#block-user-login,
+.login-block{
+  padding:30px 40px;
+  background:rgba(255,255,255,0.7);
+  webkit-box-shadow: 0 6px 6px rgba(0,0,0,0.3);
+    -moz-box-shadow: 0 6px 6px rgba(0,0,0,0.3);
+    box-shadow: 0 6px 6px rgba(0,0,0,0.3);
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.not-logged-in {
+  .tabs--primary {
+    display:none;
   }
 }

@@ -19,3 +19,40 @@ function devcommon_menu() {
 function homepage() {
   return '';	
 }
+
+/**
+ * Implements hook_form_alter()
+ */
+function devcommon_form_alter(&$form, &$form_state, $form_id) {
+  if($form_id == 'user_register_form') {
+	$form['#submit'][] = 'devcommon_register_submit';
+  }
+}
+
+function devcommon_register_submit(&$form, &$form_state) {
+  $profile_type = $form_state['values']['field_profile_type']['und'][0]['value'];
+  if ($profile_type == 'Athlete') {
+	$role = user_role_load_by_name("athlete");
+	$user = $form['#user']; 
+	$userroles = $user->roles; 
+	$userroles[$role->rid] = $role->name; 
+	user_save($user, array('roles' => $userroles));
+	
+	// Where 'main' is your profile2 type machine name.
+    $profile = profile2_create(array('type' => 'athlete', 'uid' => $user->uid));
+    // Save the profile2 to the user account.
+    profile2_save($profile);
+  }
+  else if ($profile_type == 'Coach') {
+	$role = user_role_load_by_name("recruiter");
+	$user = $form['#user']; 
+	$userroles = $user->roles; 
+	$userroles[$role->rid] = $role->name; 
+	user_save($user, array('roles' => $userroles));
+	
+	// Where 'main' is your profile2 type machine name.
+    $profile = profile2_create(array('type' => 'main', 'uid' => $user->uid));
+    // Save the profile2 to the user account.
+    profile2_save($profile);  
+  }
+}
